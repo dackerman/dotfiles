@@ -52,5 +52,17 @@
       ido-max-prospects 10
       ido-default-file-method 'selected-window)
 
-;; auto-completion in minibuffer
 (icomplete-mode +1)
+
+(require 'paredit)
+(paredit-mode t)
+
+;; Create some auxilliary windows
+(progn (split-window-right -80)
+       (other-window 1)
+       (split-window-below -20))
+
+(require 'erc)
+
+(nth 2 (window-list))
+
