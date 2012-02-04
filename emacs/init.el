@@ -3,8 +3,7 @@
 (add-to-list 'load-path "~/code/dotfiles/emacs/lisp")
 (add-to-list 'load-path "~/code/dotfiles/emacs/")
 
-(load-theme 'zenburn)
-
+(menu-bar-mode -1)
 ;; -----------------------------------------------------------------------------
 ;; el-get initialization -------------------------------------------------------
 ;; -----------------------------------------------------------------------------
@@ -42,13 +41,6 @@
 (icomplete-mode +1)
 
 (require 'paredit)
-(paredit-mode t)
-
-;; Create some auxilliary windows
-(progn (split-window-right -80)
-       (other-window 1)
-       (split-window-below -20)
-       (split-window-below -20))
 
 (defun dack-pick-side-window ()
   (interactive)
