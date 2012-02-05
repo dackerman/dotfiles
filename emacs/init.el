@@ -8,28 +8,28 @@
 
 (menu-bar-mode -1)
 ;; -----------------------------------------------------------------------------
-;; el-get initialization -------------------------------------------------------
+;; Package initialization ------------------------------------------------------
 ;; -----------------------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get"
-    (unless (require 'el-get nil t)
-      (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-		    (lambda (s) (end-of-buffer) (eval-print-last-sexp)))))
-
-(el-get nil 'egg) ;; Git manipulation ----------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(require 'el-get)
+(setq el-get-sources '(
+  (:name egg)
+  (:name markdown-mode)
+  (:name js2-mode)
+  (:name python)
+  (:name python-mode)
+  (:name ropemacs)
+  (:name virtualenv)
+  (:name yaml-mode)
+  (:name rainbow-delimiters)
+  (:name slime)))
+(setq emacs-packages (mapcar 'el-get-source-name el-get-sources))
+(el-get 'sync emacs-packages)
 
 ;; -----------------------------------------------------------------------------
-;; Markdown mode ---------------------------------------------------------------
+;; Display tweaks --------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
-(require 'markdown-mode)
-
-
-;; -----------------------------------------------------------------------------
-;; Rainbow parenthesis ---------------------------------------------------------
-;; -----------------------------------------------------------------------------
-(require 'rainbow-delimiters)
-
 (setq inhibit-startup-screen t)
-
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
@@ -109,6 +109,24 @@
  '(current-language-environment "English")
  '(custom-safe-themes (quote ("4bc973a713266f486056811f64a309b429b7d95c37e93df0003d31bead3b8fbe" default)))
  '(custom-theme-directory "~/.emacs.d/themes")
+ '(erc-autojoin-mode t)
+ '(erc-button-mode t)
+ '(erc-fill-mode t)
+ '(erc-input-line-position -1)
+ '(erc-irccontrols-mode t)
+ '(erc-list-mode t)
+ '(erc-match-mode t)
+ '(erc-menu-mode t)
+ '(erc-move-to-prompt-mode t)
+ '(erc-netsplit-mode t)
+ '(erc-networks-mode t)
+ '(erc-noncommands-mode t)
+ '(erc-pcomplete-mode t)
+ '(erc-readonly-mode t)
+ '(erc-ring-mode t)
+ '(erc-stamp-mode t)
+ '(erc-track-minor-mode t)
+ '(erc-track-mode t)
  '(fringe-mode 0 nil (fringe))
  '(global-font-lock-mode t nil (font-lock))
  '(global-rainbow-delimiters-mode t)
