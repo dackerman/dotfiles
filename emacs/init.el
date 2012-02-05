@@ -1,12 +1,12 @@
 ;; Emacs configuration
+;; Note: You must have these packages installed on your system before everything
+;; will work for you.
+;;
+;; sudo apt-get install mercurial livetex
 
 (add-to-list 'load-path "~/code/dotfiles/emacs/lisp")
 (add-to-list 'load-path "~/code/dotfiles/emacs/")
 
-;; Run sudo apt-get install emacs-goodies-el to get this folder ----------------
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/emacs-goodies-el/")
-
-(menu-bar-mode -1)
 ;; -----------------------------------------------------------------------------
 ;; Package initialization ------------------------------------------------------
 ;; -----------------------------------------------------------------------------
@@ -22,21 +22,26 @@
   (:name virtualenv)
   (:name yaml-mode)
   (:name rainbow-delimiters)
-  (:name slime)))
+  (:name slime)
+  (:name paredit)
+  (:name yasnippet
+	 :type git
+	 :url "https://github.com/capitaomorte/yasnippet.git"
+	 :features "yasnippet")))
 (setq emacs-packages (mapcar 'el-get-source-name el-get-sources))
 (el-get 'sync emacs-packages)
 
 ;; -----------------------------------------------------------------------------
 ;; Display tweaks --------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
+(menu-bar-mode -1)
 (setq inhibit-startup-screen t)
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
 
-;; tramp, for sudo access
+;; Tramp for sudo access -------------------------------------------------------
 (require 'tramp)
-;; keep in mind known issues with zsh - see emacs wiki
 (setq tramp-default-method "ssh")
 
 ;; -----------------------------------------------------------------------------
