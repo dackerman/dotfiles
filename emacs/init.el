@@ -3,16 +3,29 @@
 (add-to-list 'load-path "~/code/dotfiles/emacs/lisp")
 (add-to-list 'load-path "~/code/dotfiles/emacs/")
 
+;; Run sudo apt-get install emacs-goodies-el to get this folder ----------------
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/emacs-goodies-el/")
+
 (menu-bar-mode -1)
 ;; -----------------------------------------------------------------------------
 ;; el-get initialization -------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get"
-	     (unless (require 'el-get nil t)
-	       (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-			     (lambda (s) (end-of-buffer) (eval-print-last-sexp)))))
+    (unless (require 'el-get nil t)
+      (url-retrieve "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+		    (lambda (s) (end-of-buffer) (eval-print-last-sexp)))))
 
+(el-get nil 'egg) ;; Git manipulation ----------------------------------------------
+
+;; -----------------------------------------------------------------------------
+;; Markdown mode ---------------------------------------------------------------
+;; -----------------------------------------------------------------------------
+(require 'markdown-mode)
+
+
+;; -----------------------------------------------------------------------------
 ;; Rainbow parenthesis ---------------------------------------------------------
+;; -----------------------------------------------------------------------------
 (require 'rainbow-delimiters)
 
 (setq inhibit-startup-screen t)
