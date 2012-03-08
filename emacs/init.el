@@ -24,6 +24,7 @@
   (:name rainbow-delimiters)
   (:name slime)
   (:name paredit)
+  (:name haskell-mode)
   (:name yasnippet
 	 :type git
 	 :url "https://github.com/capitaomorte/yasnippet.git"
