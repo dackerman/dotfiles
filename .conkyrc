@@ -1,0 +1,49 @@
+alignment top_right
+background true
+default_color 0077ff
+double_buffer yes
+wm_class_name Conky
+own_window yes
+own_window_type desktop
+own_window_transparent no
+own_window_colour 000000
+TEXT
+# Header
+$nodename \
+${alignc}$sysname $kernel \
+${alignr}${time %l:%M:%p}n
+
+WLAN:
+${addr wlan0} on ${wireless_essid wlan0}
+Bitrate: ${wireless_bitrate wlan0}
+Quality: ${wireless_link_bar 5,200}
+
+Uptime: $uptime
+
+Emacs ${cmdline_to_pid "emacs"}
+
+CPUs running at $freq Mhz
+${cpugraph 1 32,70 104E8B 0077ff -l} \
+${cpugraph 2 32,70 104E8B 0077ff -l} \
+${cpugraph 3 32,70 104E8B 0077ff -l} \
+${cpugraph 4 32,70 104E8B 0077ff -l}
+${cpugraph 5 32,70 104E8B 0077ff -l} \
+${cpugraph 6 32,70 104E8B 0077ff -l} \
+${cpugraph 7 32,70 104E8B 0077ff -l} \
+${cpugraph 8 32,70 104E8B 0077ff -l}
+
+Running $running_processes concurrent processes and $running_threads threads.
+
+Memory $memfree free, $memmax total (${memperc}%)
+${membar 5,300}
+${memgraph 32,300 104E8B 0077ff 750}
+
+Disk IO
+${diskiograph 32,300 104E8B 0077ff 750}
+
+Downloading at $downspeedf KiB
+Uploading at $upspeedf KiB
+
+Adapter: $acpiacadapter
+Temp: $acpitemp C
+
